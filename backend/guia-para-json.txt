@@ -1,3 +1,22 @@
+Passo 1: Preparação - Instale o Node.js
+Antes de começar, é importante ter o Node.js instalado em seu sistema. Não se preocupe se ainda não tiver, temos um guia de Como Instalar o Node.js (Windows, Linux e macOS).
+
+Siga-o, e assim que o Node.js estiver instalado, volte aqui para continuar com a instalação do JSON Server.
+
+Passo 2: Instalação do JSON Server
+Agora que você possui o Node.js, podemos prosseguir com a instalação do JSON Server. Vamos lá!
+
+Abra seu terminal ou prompt de comando;
+
+Para instalar o JSON Server globalmente, você só precisa digitar o seguinte comando e pressionar "Enter":
+
+npm install -g json-server
+COPIAR CÓDIGO
+Isso fará com que o JSON Server seja instalado globalmente em seu sistema, e você estará pronto para utilizá-lo em qualquer projeto.
+
+Passo 3: Preparando o arquivo JSON
+Agora, o arquivo JSON videos.json, que está dentro da pasta backend do nosso projeto, servirá como a fonte de dados para o JSON Server. Para isso, copie o JSON a seguir e cole em videos.json:
+
 {
     "videos": [
       {
@@ -106,3 +125,41 @@
       }
     ]
   }
+COPIAR CÓDIGO
+Passo 4: Permitindo política de execução de scripts (apenas Windows)
+Caso você utiliza o Windows, é necessário que você siga os seguintes passos para conseguir executar o JSON Server:
+
+Abra o PowerShell como administrador. Para fazer isso, pesquise "PowerShell" no menu Iniciar, clique com o botão direito do mouse sobre "Windows PowerShell" (ou "Windows Terminal") e selecione "Executar como administrador".
+
+No PowerShell, você pode verificar a política de execução atual com o seguinte comando:
+
+Get-ExecutionPolicy
+COPIAR CÓDIGO
+A política de execução pode ser "Restricted" (Restrita), que é a configuração padrão que impede a execução de scripts.
+
+Execute o seguinte comando para permitir a execução de scripts no seu computador:
+
+Set-ExecutionPolicy RemoteSigned
+COPIAR CÓDIGO
+O PowerShell pode solicitar confirmação para realizar a operação. Pressione "S" (Sim) ou "Y" (Yes) dependendo da linguagem do seu terminal e pressione Enter para confirmar.
+
+Ao finalizar o curso, é uma boa prática reverter a política de execução de scripts para o valor original para garantir a segurança do sistema. Você pode fazer isso definindo a política de execução de volta para "Restricted" com o seguinte comando:
+
+Set-ExecutionPolicy Restricted
+COPIAR CÓDIGO
+Mas caso você queira utilizar o JSON Server novamente, será necessário alterar a política de execução para "RemoteSigned" mais uma vez.
+
+Passo 5: Inicialização do JSON Server
+Agora que você tem o JSON Server e o arquivo JSON preparados, é hora de colocá-los em funcionamento:
+
+Abra o terminal integrado do VSCode, assim o terminal irá abrir automaticamente dentro da pasta do projeto;
+
+Execute o seguinte comando para iniciar o JSON Server e usá-lo com o arquivo videos.json:
+
+    json-server --watch backend/videos.json
+COPIAR CÓDIGO
+--watch: Este é um dos argumentos que você pode fornecer opcionalmente ao comando JSON Server. A opção --watch é usada para especificar que o servidor deve ficar "observando" um arquivo JSON específico para quaisquer mudanças. Isso significa que se você modificar o arquivo videos.json, o JSON Server automaticamente recarregará os dados para refletir as alterações.
+
+O JSON Server será iniciado e começará a servir uma API REST falsa com base nos dados do arquivo videos.json, o que vai nos permitir o consumo dos dados para o VidFlow.
+
+Caso queira aprender mais sobre a instalação e uso do JSON Server, recomendamos o artigo Mockando APIs REST com json-server.
